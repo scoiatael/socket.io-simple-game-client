@@ -1,0 +1,5 @@
+{
+  "scriptPreprocessor": "preprocessor.js",
+  "testFileExtensions": ["coffee", "js"],
+  "moduleFileExtensions": ["js", "json", "coffee", "litcoffee", "coffee.md"]
+}
