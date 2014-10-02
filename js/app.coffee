@@ -8,8 +8,8 @@ li = React.DOM.li
 
 $(document).foundation()
 
-console.log "IO is #{JSON.stringify io}"
 connect = ->
+  console.log "IO is #{JSON.stringify io}"
   if io
     io = io.connect()
 
