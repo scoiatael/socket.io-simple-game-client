@@ -44,11 +44,15 @@ module.exports = function(grunt) {
       }
     },
     webpack: {
+      options: {
+        module: {
+          loaders: [
+            { test: /\.coffee$/, loader: "coffee-loader" },
+            { test: /\.(coffee\.md|litcoffee)$/, loader: "coffee-loader?literate" }
+          ]
+        }
+      },
       dist: {
-        loaders: [
-          { test: /\.coffee$/, loader: "coffee-loader" },
-          { test: /.(coffee\.md|litcoffee)$/, loader: "coffee-loader?literate" }
-        ],
         entry: "./js/app.coffee",
         output: {
           path: "dist/js/",
