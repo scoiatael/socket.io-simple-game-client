@@ -62,7 +62,8 @@ module.exports = function(grunt) {
     grunt.file.delete('dist/js/app.js');
   });
 
+  grunt.registerTask('test', ['jest']);
   grunt.registerTask('build', ['sass','webpack','uglify', 'clean_webpack']);
-  grunt.registerTask('default', ['build']);
+  grunt.registerTask('default', ['test', 'build']);
 
 };
