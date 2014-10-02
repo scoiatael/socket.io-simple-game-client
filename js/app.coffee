@@ -9,14 +9,18 @@ li = React.DOM.li
 $(document).foundation()
 
 console.log "IO is #{JSON.stringify io}"
-if io
-  io = io.connect()
+connect = ->
+  if io
+    io = io.connect()
 
-  io.emit('ready', {hey: 'server'}, (data) ->
-      alert(data.success)
-  )
-else
-  console.log 'No server connection!'
+    io.emit('ready', {hey: 'server'}, (data) ->
+        alert(data.success)
+    )
+  else
+    setTimeout connect, 1000
+    console.log 'No server connection!'
+
+connect()
 
 React.renderComponent (
   div { className:'row' }, [
