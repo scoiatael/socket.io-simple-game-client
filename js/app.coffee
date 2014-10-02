@@ -1,4 +1,5 @@
 
+console.log "IO is #{JSON.stringify io}"
 React = require 'react'
 h1 = React.DOM.h1
 div = React.DOM.div
