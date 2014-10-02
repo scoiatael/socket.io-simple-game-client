@@ -1,11 +1,5 @@
 
 console.log "IO is #{JSON.stringify io}"
-React = require 'react'
-h1 = React.DOM.h1
-div = React.DOM.div
-a = React.DOM.a
-ul = React.DOM.ul
-li = React.DOM.li
 
 connect = ->
   console.log "IO is #{JSON.stringify io}"
@@ -20,6 +14,13 @@ connect = ->
     console.log 'No server connection!'
 
 connect()
+
+React = require 'react'
+h1 = React.DOM.h1
+div = React.DOM.div
+a = React.DOM.a
+ul = React.DOM.ul
+li = React.DOM.li
 
 $(document).foundation()
 
