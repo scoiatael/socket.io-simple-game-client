@@ -20,7 +20,6 @@
     "jest-cli": "^0.1.18",
     "load-grunt-tasks": "^0.6.0",
     "react": "^0.11.2",
-    "socket.io-client": "^1.1.0",
     "time-grunt": "^1.0.0",
     "underscore": "^1.6.0",
     "webpack": "^1.4.4",
