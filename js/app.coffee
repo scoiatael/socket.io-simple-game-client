@@ -6,8 +6,6 @@ a = React.DOM.a
 ul = React.DOM.ul
 li = React.DOM.li
 
-$(document).foundation()
-
 connect = ->
   console.log "IO is #{JSON.stringify io}"
   if io
@@ -21,6 +19,8 @@ connect = ->
     console.log 'No server connection!'
 
 connect()
+
+$(document).foundation()
 
 React.renderComponent (
   div { className:'row' }, [
