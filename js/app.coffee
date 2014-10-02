@@ -1,21 +1,3 @@
-
-console.log "IO is #{JSON.stringify io}"
-
-connect = ->
-  console.log "IO is #{JSON.stringify io}"
-  if io
-    io = io.connect()
-
-    io.emit('ready', {hey: 'server'}, (data) ->
-        alert(data.success)
-    )
-  else
-    setTimeout connect, 1000
-    console.log 'No server connection!'
-
-connect()
-
-$ = require 'jquery'
 io = require 'socket.io-client'
 React = require 'react'
 h1 = React.DOM.h1
@@ -24,7 +6,7 @@ a = React.DOM.a
 ul = React.DOM.ul
 li = React.DOM.li
 
-$(document).foundation()
+console.log "IO is #{JSON.stringify io}"
 
 React.renderComponent (
   div { className:'row' }, [
