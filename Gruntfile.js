@@ -7,8 +7,18 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
-    dist: {
-      dest: "dist/<%= pkg.name %>.js"
+    sass: {
+      options: {
+        includePaths: ['dist/bower_components/foundation/scss']
+      },
+      dist: {
+        options: {
+          outputStyle: 'compressed'
+        },
+        files: {
+          'dist/css/app.css': 'scss/app.scss'
+        }
+      }
     },
     uglify: {
       options: {
@@ -16,24 +26,43 @@ module.exports = function(grunt) {
       },
       dist: {
         files: {
-          'dist/<%= pkg.name %>.min.js': ['<%= dist.dest %>']
+          'dist/js/app.min.js': ['dist/js/app.js']
         }
       }
+    },
+    watch: {
+      grunt: { files: ['Gruntfile.js'] },
+
+      sass: {
+        files: 'scss/**/*.scss',
+        tasks: ['sass']
+        }
     },
     jest: {
       options: {
         config: "jestrc.json"
       }
     },
-    coffeeify: {
-      options: {},
-      files: {
-        src: ['src/**/*.coffee'],
-        dest: '<%= dist.dest %>'
+    webpack: {
+      dist: {
+        loaders: [
+          { test: /\.coffee$/, loader: "coffee-loader" },
+          { test: /.(coffee\.md|litcoffee)$/, loader: "coffee-loader?literate" }
+        ],
+        entry: "./js/app.coffee",
+        output: {
+          path: "dist/js/",
+          filename: "app.js"
+        }
       }
     }
   });
 
-  grunt.registerTask('default', ['coffeeify', 'uglify']);
+  grunt.registerTask('clean_webpack', function () {
+    grunt.file.delete('dist/js/app.js');
+  });
+
+  grunt.registerTask('build', ['sass','webpack','uglify', 'clean_webpack']);
+  grunt.registerTask('default', ['build']);
 
 };
