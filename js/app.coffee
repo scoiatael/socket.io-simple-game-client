@@ -10,13 +10,16 @@ li = React.DOM.li
 
 getScript = (script, cb) ->
   console.log "Trying to get #{script}"
-  $.getScript script, ->
+  $.getScript(script, ->
     console.log "Loaded script #{script}"
     cb null
+  ).fail (err) ->
+    console.error "#{err} while loading #{script}"
+    cb err
 
 async.eachSeries [
   '/bower_components/foundation/js/foundation.min.js'
-  #  '/socket.io/socket.io.js/'
+  '/socket.io/socket.io.js/'
 ], getScript, (err) ->
   if err
     console.error err
