@@ -1,6 +1,7 @@
 $ = require 'jquery'
 async = require 'async'
 React = require 'react'
+foundation = require 'script!../dist/bower_components/foundation/js/foundation.min.js'
 
 h1 = React.DOM.h1
 div = React.DOM.div
@@ -14,11 +15,9 @@ getScript = (script, cb) ->
     console.log "Loaded script #{script}"
     cb null
   ).fail (jqxhr, settings, err) ->
-    console.error "#{err} while loading #{script}"
     cb err
 
 async.eachSeries [
-  '/bower_components/foundation/js/foundation.min.js'
   '/socket.io/socket.io.js/'
 ], getScript, (err) ->
   if err
