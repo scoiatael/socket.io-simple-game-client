@@ -14,7 +14,7 @@ getScript = (script, cb) ->
     console.log "Loaded script #{script}"
     cb null
 
-async.each [
+async.eachSeries [
   '/bower_components/foundation/js/foundation.min.js'
   '/socket.io/socket.io.js/'
 ], getScript, (err) ->
