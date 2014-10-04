@@ -10,10 +10,11 @@ a = React.DOM.a
 ul = React.DOM.ul
 li = React.DOM.li
 
+top = require './jsx/top.coffee'
+offmenu = require './jsx/offmenu.coffee'
+
 getScript = (script, cb) ->
-  console.log "Trying to get #{script}"
   $.getScript(script, ->
-    console.log "Loaded script #{script}"
     cb null
   ).fail (jqxhr, settings, err) ->
     cb err
@@ -23,12 +24,12 @@ async.eachSeries [
 ], getScript, (err) ->
   if err
     console.error err
+  else
+    console.log "All scripts loaded."
 
-  React.renderComponent (
-    div { className:'row' }, [
-      ( div { key:1, className:'large-6 columns' }, ( h1 {}, 'Welcome' ) )
-      ( div { key:2, className:'large-6 columns' }, ( ul { className: 'button-group right' },
-        ( li {key:v}, ( a { className:'button', href:'#'}, "Test #{v}") ) for v in [0..3]) )
-    ]
-  ), document.getElementById('react-root')
+React.renderComponent (
+  div null,
+  ( top null ),
+  ( offmenu null )
+), document.getElementById('react-root')
 
