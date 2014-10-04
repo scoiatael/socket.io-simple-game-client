@@ -16,7 +16,7 @@ getScript = (script, cb) ->
 
 async.eachSeries [
   '/bower_components/foundation/js/foundation.min.js'
-  '/socket.io/socket.io.js/'
+  #  '/socket.io/socket.io.js/'
 ], getScript, (err) ->
   if err
     console.error err
