@@ -10,9 +10,9 @@ li = React.DOM.li
 
 getScript = (script, cb) ->
   console.log "Trying to get #{script}"
-  $.getScript script, (err) ->
-    console.log "Loaded script #{script} with #{err}"
-    cb err
+  $.getScript script, ->
+    console.log "Loaded script #{script}"
+    cb null
 
 async.each [
   '/bower_components/foundation/js/foundation.min.js'
