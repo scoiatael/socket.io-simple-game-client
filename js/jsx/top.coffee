@@ -1,21 +1,15 @@
 React = require 'react'
 
+h1 = React.DOM.h1
+div = React.DOM.div
+a = React.DOM.a
+ul = React.DOM.ul
+li = React.DOM.li
+
 module.exports = React.createClass
-  runFoundation: ->
-    @getDOMNode().foundation()
-  componentDidUpdate: runFoundation
-  componentDidMount: runFoundation
   render: ->
-    React.DOM.div
-      class: "off-canvas-wrap"
-      "data-offcanvas": true
-    , React.DOM.div(
-      class: "inner-wrap"
-    , React.DOM.a(
-      class: "left-off-canvas-toggle"
-      href: "#"
-    , "Menu"), React.DOM.aside(
-      class: "left-off-canvas-menu"
-    , React.DOM.ul(null, React.DOM.li(null, React.DOM.a(
-      href: "#"
-    , "Item 1")), " ...")), React.DOM.p(null, "Set in the year 0 F.E. (\"Foundation Era\"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire. Hari Seldon, a mathematician and psychologist, has developed psychohistory, a new field of science and psychology that equates all possibilities in large societies to mathematics, allowing for the prediction of future events."), React.DOM.a(class: "exit-off-canvas"), " "), " "
+    div { className:'row' }, [
+      ( div { key:1, className:'large-6 columns' }, ( h1 {}, 'Welcome' ) )
+      ( div { key:2, className:'large-6 columns' }, ( ul { className: 'button-group right' },
+        ( li {key:v}, ( a { className:'button', href:'#'}, "Test #{v}") ) for v in [0..3]) )
+    ]
