@@ -1,7 +1,8 @@
-$ = require 'jquery'
 async = require 'async'
 React = require 'react'
-foundation = require 'script!../dist/bower_components/foundation/js/foundation.min.js'
+
+$ = jQuery = require 'jquery'
+foundation = require 'script!../dist/bower_components/foundation/js/foundation/foundation.js'
 
 h1 = React.DOM.h1
 div = React.DOM.div
