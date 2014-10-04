@@ -13,7 +13,7 @@ getScript = (script, cb) ->
   $.getScript(script, ->
     console.log "Loaded script #{script}"
     cb null
-  ).fail (err) ->
+  ).fail (jqxhr, settings, err) ->
     console.error "#{err} while loading #{script}"
     cb err
 
