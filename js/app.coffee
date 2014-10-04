@@ -4,14 +4,8 @@ React = require 'react'
 $ = window.jQuery = require 'jquery'
 require 'script!../dist/bower_components/foundation/js/foundation.min.js'
 
-h1 = React.DOM.h1
 div = React.DOM.div
-a = React.DOM.a
-ul = React.DOM.ul
-li = React.DOM.li
-
 top = require './jsx/top.coffee'
-offmenu = require './jsx/offmenu.coffee'
 
 getScript = (script, cb) ->
   $.getScript(script, ->
@@ -27,9 +21,10 @@ async.eachSeries [
   else
     console.log "All scripts loaded."
 
+$(document).foundation()
+
 React.renderComponent (
   div null,
-  ( top null ),
-  ( offmenu null )
+  ( top null )
 ), document.getElementById('react-root')
 

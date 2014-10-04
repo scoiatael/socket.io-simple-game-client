@@ -9,10 +9,19 @@ li = React.DOM.li
 fillerText = "Set in the year 0 F.E. (\"Foundation Era\"), The Psychohistorians opens on Trantor, the capital of the 12,000-year-old Galactic Empire. Though the empire appears stable and powerful, it is slowly decaying in ways that parallel the decline of the Western Roman Empire. Hari Seldon, a mathematician and psychologist, has developed psychohistory, a new field of science and psychology that equates all possibilities in large societies to mathematics, allowing for the prediction of future events."
 
 module.exports = React.createClass
-  runFoundation: ->
-    #@getDOMNode().foundation()
-  componentDidUpdate: @runFoundation
-  componentDidMount: @runFoundation
+  getInitialState: ->
+    {
+      visible: false
+    }
+  hideSwitch: ->
+    console.log "Offmenu visibility is #{@state.visible}"
+    @setState(
+      visible : not @state.visible
+    )
+  onClick: (ev) ->
+    @hideSwitch()
+    ev.preventDefault()
+    return false
   render: ->
     div(
       className: "off-canvas-wrap"
@@ -22,9 +31,12 @@ module.exports = React.createClass
         , a(
           className: "left-off-canvas-toggle"
           href: "#"
+          onClick: @onClick
           , "Menu")
         , aside(
-          className: "left-off-canvas-menu"
+          # className: "left-off-canvas-menu"
+          style:
+            display: { true: 'inline', false: 'none' }[@visible]
           , ul(
             {}
             , li(
