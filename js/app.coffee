@@ -1,4 +1,5 @@
 $ = require 'jquery'
+async = require 'async'
 React = require 'react'
 h1 = React.DOM.h1
 div = React.DOM.div
@@ -6,8 +7,16 @@ a = React.DOM.a
 ul = React.DOM.ul
 li = React.DOM.li
 
-$.getScript '/socket.io/socket.io.js/', ->
-  console.log "IO is #{JSON.stringify io}"
+getScript = (script) ->
+  $.getScript script, ->
+    console.log "Loaded script #{script}"
+
+async.each [
+  '/bower_components/foundation/js/foundation.min.js'
+  '/socket.io/socket.io.js/'
+], getScript, (err) ->
+  if err
+    console.error err
 
   React.renderComponent (
     div { className:'row' }, [
