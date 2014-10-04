@@ -7,9 +7,10 @@ a = React.DOM.a
 ul = React.DOM.ul
 li = React.DOM.li
 
-getScript = (script) ->
+getScript = (script, cb) ->
   $.getScript script, ->
     console.log "Loaded script #{script}"
+    cb null
 
 async.each [
   '/bower_components/foundation/js/foundation.min.js'
